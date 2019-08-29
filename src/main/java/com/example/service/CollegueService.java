@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.example.entite.Collegue;
+import com.example.exception.CollegueInvalideException;
 import com.example.exception.CollegueNonTrouveException;
 
 /**
@@ -47,6 +48,7 @@ public class CollegueService {
 
 		List<Collegue> listeCollegue = new ArrayList<>();
 
+		
 		Iterator<Collegue> iterator = data.values().iterator();
 
 		while (iterator.hasNext()) {
@@ -67,12 +69,11 @@ public class CollegueService {
 		Collegue collegue = null;
 
 		while (iterator.hasNext()) {
-			
-			
+
 			Collegue collegueIterator = iterator.next();
-			
+
 			if (collegueIterator.getMatricule().equals(matriculeRecherche)) {
-				collegue = collegueIterator; 
+				collegue = collegueIterator;
 			}
 		}
 
@@ -82,12 +83,52 @@ public class CollegueService {
 		if (collegue != null) {
 			return collegue;
 		} else {
-			throw new CollegueNonTrouveException("Collègue non trouvé"); 
+			throw new CollegueNonTrouveException("Collègue non trouvé");
 		}
+
+	}
+
+	public Collegue ajouterUnCollegue(Collegue collegueAAjouter) {
+
+		// TODO Vérifier que le nom et les prenoms ont chacun au moins 2 caractères
+		if (collegueAAjouter.getNom().length() < 2) {
+			throw new CollegueInvalideException("Le nom est trop court");
+		}
+
+		if (collegueAAjouter.getPrenoms().length() < 2) {
+			throw new CollegueInvalideException("Le prénom est trop court");
+		}
+
+		// TODO Vérifier que l'email a au moins 3 caractères et contient `@`
+
+		if (collegueAAjouter.getEmail().length() < 3) {
+			throw new CollegueInvalideException("L'email est trop court");
+		}
+		if(!collegueAAjouter.getEmail().contains("@")) {
+			throw new CollegueInvalideException("L'email n'a pas d'@");
+		}
+
+		// TODO Vérifier que la photoUrl commence bien par `http`
+		if(!collegueAAjouter.getPhotoUrl().startsWith("http")) {
+			throw new CollegueInvalideException("L'url ne commence pas par http");
+		}
+		// TODO Vérifier que la date de naissance correspond à un age >= 18
 		
-	
 		
-		
+		if(collegueAAjouter.getDateDeNaissance().getYear()> (LocalDate.now().getYear()-18)) {
+			throw new CollegueInvalideException("L'utilisateur n'a pas 18 ans");
+		}
+		// TODO Si une des règles ci-dessus n'est pas valide, générer une exception :
+		// `CollegueInvalideException`.
+
+		// TODO générer un matricule pour ce collègue (`UUID.randomUUID().toString()`)
+		collegueAAjouter.setMatricule(UUID.randomUUID().toString());
+
+		// TODO Sauvegarder le collègue
+
+		data.put(collegueAAjouter.getMatricule(), collegueAAjouter);
+
+		return collegueAAjouter;
 	}
 
 }

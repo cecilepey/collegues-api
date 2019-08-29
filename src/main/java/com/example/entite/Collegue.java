@@ -8,7 +8,7 @@ public class Collegue {
 	
 	private String nom; 
 	
-	private String prenom; 
+	private String prenoms; 
 	
 	private String email; 
 	
@@ -32,12 +32,30 @@ public class Collegue {
 	 * @param dateDeNaissance
 	 * @param photoUrl
 	 */
-	public Collegue(String matricule, String nom, String prenom, String email, LocalDate dateDeNaissance,
+	public Collegue(String matricule, String nom, String prenoms, String email, LocalDate dateDeNaissance,
 			String photoUrl) {
 		super();
 		this.matricule = matricule;
 		this.nom = nom;
-		this.prenom = prenom;
+		this.prenoms = prenoms;
+		this.email = email;
+		this.dateDeNaissance = dateDeNaissance;
+		this.photoUrl = photoUrl;
+	}
+
+
+
+	/** Constructeur
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param dateDeNaissance
+	 * @param photoUrl
+	 */
+	public Collegue(String nom, String prenoms, String email, LocalDate dateDeNaissance, String photoUrl) {
+		super();
+		this.nom = nom;
+		this.prenoms = prenoms;
 		this.email = email;
 		this.dateDeNaissance = dateDeNaissance;
 		this.photoUrl = photoUrl;
@@ -76,15 +94,15 @@ public class Collegue {
 	/** Getter
 	 * @return the prenom
 	 */
-	public String getPrenom() {
-		return prenom;
+	public String getPrenoms() {
+		return prenoms;
 	}
 
 	/** Setter
 	 * @param prenom the prenom to set
 	 */
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setPrenoms(String prenoms) {
+		this.prenoms = prenoms;
 	}
 
 	/** Getter
