@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,9 +32,11 @@ import com.example.service.CollegueService;
  *
  */
 @RestController
+
 public class CollegueController {
 
-	CollegueService colService = new CollegueService();
+	@Autowired
+	CollegueService colService;
 
 	@GetMapping(value = "/collegues")
 	public List<String> findByNom(@RequestParam String nom) {
