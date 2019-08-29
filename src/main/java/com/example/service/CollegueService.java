@@ -48,7 +48,6 @@ public class CollegueService {
 
 		List<Collegue> listeCollegue = new ArrayList<>();
 
-		
 		Iterator<Collegue> iterator = data.values().iterator();
 
 		while (iterator.hasNext()) {
@@ -91,33 +90,55 @@ public class CollegueService {
 	public Collegue ajouterUnCollegue(Collegue collegueAAjouter) {
 
 		// TODO Vérifier que le nom et les prenoms ont chacun au moins 2 caractères
-		if (collegueAAjouter.getNom().length() < 2) {
-			throw new CollegueInvalideException("Le nom est trop court");
+
+		if (collegueAAjouter.getNom() != null) {
+			if (collegueAAjouter.getNom().length() < 2) {
+				throw new CollegueInvalideException("Le nom est trop court");
+			}
+		} else {
+			throw new CollegueInvalideException("Le nom est vide");
 		}
 
+		if(collegueAAjouter.getPrenoms() != null) {
 		if (collegueAAjouter.getPrenoms().length() < 2) {
+			throw new CollegueInvalideException("Le prénom est trop court");
+		}} else {
 			throw new CollegueInvalideException("Le prénom est trop court");
 		}
 
 		// TODO Vérifier que l'email a au moins 3 caractères et contient `@`
 
-		if (collegueAAjouter.getEmail().length() < 3) {
+		if(collegueAAjouter.getEmail() != null) {
+					if (collegueAAjouter.getEmail().length() < 3) {
 			throw new CollegueInvalideException("L'email est trop court");
 		}
-		if(!collegueAAjouter.getEmail().contains("@")) {
+		if (!collegueAAjouter.getEmail().contains("@")) {
 			throw new CollegueInvalideException("L'email n'a pas d'@");
 		}
+		} else {
+			throw new CollegueInvalideException("L'email est vide");
+		}
+
 
 		// TODO Vérifier que la photoUrl commence bien par `http`
-		if(!collegueAAjouter.getPhotoUrl().startsWith("http")) {
+		if (collegueAAjouter.getPhotoUrl() != null) {
+			if (!collegueAAjouter.getPhotoUrl().startsWith("http")) {
 			throw new CollegueInvalideException("L'url ne commence pas par http");
 		}
+		} else {
+			throw new CollegueInvalideException("L'url est vide");
+		}
+		
 		// TODO Vérifier que la date de naissance correspond à un age >= 18
-		
-		
-		if(collegueAAjouter.getDateDeNaissance().getYear()> (LocalDate.now().getYear()-18)) {
+
+		if(collegueAAjouter.getDateDeNaissance() != null) {
+			if (collegueAAjouter.getDateDeNaissance().getYear() > (LocalDate.now().getYear() - 18)) {
 			throw new CollegueInvalideException("L'utilisateur n'a pas 18 ans");
 		}
+		} else {
+			throw new CollegueInvalideException("La date de naissance est vide");
+		}
+		
 		// TODO Si une des règles ci-dessus n'est pas valide, générer une exception :
 		// `CollegueInvalideException`.
 

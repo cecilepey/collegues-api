@@ -70,9 +70,8 @@ public class CollegueController {
 	public Collegue addNewCollegue(@RequestBody Collegue collegue) {
 		
 		Collegue collegue1 = colService.ajouterUnCollegue(collegue); 
-		
+	
 		return collegue1; 
-		
 	}
 	
 
