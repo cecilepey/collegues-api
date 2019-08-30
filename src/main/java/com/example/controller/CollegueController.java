@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -84,6 +85,22 @@ public class CollegueController {
 
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Collègue non validé");
 
+	}
+	
+	@PatchMapping(value="/collegues/{matricule}")
+	public Collegue modifierMatricule(@PathVariable String matricule,  @RequestBody String email) {
+		
+		Collegue collegue1 = colService.modifierEmail(matricule, email); 
+	
+		return collegue1; 
+	}
+	
+	@PatchMapping(value="/collegues/photo/{matricule}")
+	public Collegue modifierPhotoUrl(@PathVariable String matricule,  @RequestBody String photoUrl) {
+		
+		Collegue collegue1 = colService.modifierPhotoUrl(matricule, photoUrl); 
+	
+		return collegue1; 
 	}
 	
 }

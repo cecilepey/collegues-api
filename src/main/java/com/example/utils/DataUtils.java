@@ -19,9 +19,11 @@ import com.example.entite.Collegue;
 @Component
 public class DataUtils {
 
-	private Map<String, Collegue> data = new HashMap<>();
+
 	
 	public Map<String, Collegue> creationCollegue() {
+		
+		 Map<String, Collegue> data = new HashMap<>();
 
 		Collegue collegue1 = new Collegue(UUID.randomUUID().toString(), "Peyras", "Cecile", "cecile@collegue.fr",
 				LocalDate.of(1981, 7, 15),
