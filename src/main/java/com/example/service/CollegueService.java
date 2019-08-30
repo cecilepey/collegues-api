@@ -29,32 +29,19 @@ import com.example.utils.DataUtils;
  *
  */
 @Service
-@Transactional
 public class CollegueService {
 
-
+	@Autowired
 	CollegueValidator collegueValidator;
 
 	@Autowired
 	CollegueRepository collegueRepo;
 	
-	DataUtils dataUtils;
 
-	//private Map<String, Collegue> data;
-
-	public CollegueService(CollegueValidator collegueValidator, DataUtils dataUtils) {
-
-		super();
-		this.collegueValidator = collegueValidator;
-		this.dataUtils = dataUtils;
+	public CollegueService() {
 
 	}
-//
-//	@PostConstruct
-//	public void init() {
-//		
-//		//this.data = dataUtils.creationCollegue();
-//	}
+
 
 	public List<Collegue> rechercherParNom(String nomRecherche) {
 
@@ -62,11 +49,6 @@ public class CollegueService {
 
 		List<Collegue> listeCollegue = collegueRepo.findByNom(nomRecherche);
 
-//		for (Collegue collegue : data.values()) {
-//			if (collegue.getNom().equals(nomRecherche)) {
-//				listeCollegue.add(collegue);
-//			}
-//		}
 
 		return listeCollegue;
 	}
@@ -76,11 +58,6 @@ public class CollegueService {
 
 		Collegue collegue1 = collegueRepo.findByMatricule(matriculeRecherche); 
 
-//		for (Collegue collegue : data.values()) {
-//			if (collegue.getMatricule().equals(matriculeRecherche)) {
-//				collegue1 = collegue;
-//			}
-//		}
 
 		if (collegue1 != null) {
 			return collegue1;
