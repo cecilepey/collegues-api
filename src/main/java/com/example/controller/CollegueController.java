@@ -33,7 +33,6 @@ import com.example.service.CollegueService;
  *
  */
 @RestController
-
 public class CollegueController {
 
 	@Autowired

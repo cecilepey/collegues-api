@@ -36,12 +36,10 @@ public class CollegueService {
 
 	@Autowired
 	CollegueRepository collegueRepo;
-	
 
 	public CollegueService() {
 
 	}
-
 
 	public List<Collegue> rechercherParNom(String nomRecherche) {
 
@@ -49,15 +47,13 @@ public class CollegueService {
 
 		List<Collegue> listeCollegue = collegueRepo.findByNom(nomRecherche);
 
-
 		return listeCollegue;
 	}
 
 	public Collegue rechercherParMatricule(String matriculeRecherche) {
 		// TODO retourner le collègue dont le matricule est fourni
 
-		Collegue collegue1 = collegueRepo.findByMatricule(matriculeRecherche); 
-
+		Collegue collegue1 = collegueRepo.findByMatricule(matriculeRecherche);
 
 		if (collegue1 != null) {
 			return collegue1;
@@ -89,13 +85,11 @@ public class CollegueService {
 		// TODO retourner une exception `CollegueNonTrouveException`
 		// si le matricule ne correspond à aucun collègue
 
-				Collegue collegue1 = collegueRepo.findByMatricule(matricule); 
+		Collegue collegue1 = collegueRepo.findByMatricule(matricule);
 
-//		for (Collegue collegue : data.values()) {
-//			if (collegue.getMatricule().equals(matricule)) {
-//				collegue1 = collegue;
-//			}
-//		}
+		if (collegue1 == null) {
+			throw new CollegueNonTrouveException("Ce matricule n'existe pas");
+		}
 
 		if (email != null) {
 			if (email.length() < 3) {
@@ -111,9 +105,9 @@ public class CollegueService {
 		// if (collegue1 != null) {
 		collegue1.setEmail(email);
 		return collegue1;
-//		} else {
-//			throw new CollegueNonTrouveException("Collègue non trouvé");
-//		}
+		// } else {
+		// throw new CollegueNonTrouveException("Collègue non trouvé");
+		// }
 
 		// TODO Vérifier que l'email a au moins 3 caractères et contient `@`
 		// TODO Si la règle ci-dessus n'est pas valide, générer une exception :
@@ -127,13 +121,11 @@ public class CollegueService {
 		// TODO retourner une exception `CollegueNonTrouveException`
 		// si le matricule ne correspond à aucun collègue
 
-		Collegue collegue1 = collegueRepo.findByMatricule(matricule); 
-
-//		for (Collegue collegue : data.values()) {
-//			if (collegue.getMatricule().equals(matricule)) {
-//				collegue1 = collegue;
-//			}
-//		}
+		Collegue collegue1 = collegueRepo.findByMatricule(matricule);
+		
+		if (collegue1 == null) {
+			throw new CollegueNonTrouveException("Ce matricule n'existe pas");
+		}
 
 		// TODO Vérifier que la photoUrl commence bien par `http`
 		// TODO Si la règle ci-dessus n'est pas valide, générer une exception :
