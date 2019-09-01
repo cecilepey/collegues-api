@@ -213,9 +213,13 @@ public class CollegueServiceTest {
 
 		collegueRepo.save(collegue);
 		
-		Collegue collegue1 = collegueService.modifierEmail(matricule, "lili@collegue.fr"); 
+		Collegue collegue1 = new Collegue();
+
+		collegue1.setEmail("lili@collegue.fr");
+
+		collegue = collegueService.modifierEmail(matricule, collegue1);
 		
-		Assert.assertNotNull(collegue1); 
+		Assert.assertEquals("lili@collegue.fr", collegue.getEmail());
 	}
 	
 	@Test (expected = CollegueInvalideException.class)
@@ -226,8 +230,12 @@ public class CollegueServiceTest {
 				"http/photo");
 
 		collegueRepo.save(collegue);
+
+		Collegue collegue1 = new Collegue();
+
+		collegue1.setEmail("k@");
 		
-		Collegue collegue1 = collegueService.modifierEmail(matricule, "l@"); 
+		collegue = collegueService.modifierEmail(matricule, collegue1);
 		
 	}
 	
@@ -239,8 +247,13 @@ public class CollegueServiceTest {
 				"http/photo");
 
 		collegueRepo.save(collegue);
-		
-		Collegue collegue1 = collegueService.modifierEmail(matricule, "lilicollegue.fr"); 
+
+		Collegue collegue1 = new Collegue();
+
+		collegue1.setEmail("lilicollegue.fr");
+
+
+		collegue = collegueService.modifierEmail(matricule, collegue1);
 		
 	}
 	
@@ -252,8 +265,12 @@ public class CollegueServiceTest {
 				"http/photo");
 
 		collegueRepo.save(collegue);
+
+		Collegue collegue1 = new Collegue()
+;
+		collegue1.setEmail("lili@collegue.fr");
 		
-		Collegue collegue1 = collegueService.modifierEmail("aaa", "lili@collegue.fr"); 
+		 collegue = collegueService.modifierEmail("aaa", collegue1);
 		
 	}
 
@@ -267,10 +284,14 @@ public class CollegueServiceTest {
 				"http/photo");
 
 		collegueRepo.save(collegue);
+		Collegue collegue1 = new Collegue();
+
+		collegue1.setPhotoUrl("http/joliephoto");
+
+
+		collegue= collegueService.modifierPhotoUrl(matricule, collegue1);
 		
-		Collegue collegue1 = collegueService.modifierPhotoUrl(matricule, "http/joliephoto"); 
-		
-		Assert.assertNotNull(collegue1);
+		Assert.assertEquals("http/joliephoto", collegue.getPhotoUrl());
 		
 	}
 	
@@ -283,8 +304,11 @@ public class CollegueServiceTest {
 				"http/photo");
 
 		collegueRepo.save(collegue);
-		
-		Collegue collegue1 = collegueService.modifierPhotoUrl(matricule, "joliephoto"); 	
+
+		Collegue collegue1 = new Collegue();
+		collegue1.setPhotoUrl("joliephoto");
+
+		collegue = collegueService.modifierPhotoUrl(matricule, collegue1);
 		
 	}
 	
@@ -297,8 +321,12 @@ public class CollegueServiceTest {
 				"http/photo");
 
 		collegueRepo.save(collegue);
-		
-		Collegue collegue1 = collegueService.modifierPhotoUrl("aaa", "http/joliephoto"); 	
+
+		Collegue collegue1 = new Collegue();
+
+		collegue1.setPhotoUrl("http/joliePhoto");
+
+		collegue = collegueService.modifierPhotoUrl("aaa", collegue1);
 		
 	}
 
