@@ -102,13 +102,10 @@ public class CollegueService {
 			throw new CollegueInvalideException("L'email est vide");
 		}
 
-		// if (collegue1 != null) {
+	
 		collegue1.setEmail(collegue.getEmail());
 		return collegue1;
-		// } else {
-		// throw new CollegueNonTrouveException("Collègue non trouvé");
-		// }
-
+		
 		// TODO Vérifier que l'email a au moins 3 caractères et contient `@`
 		// TODO Si la règle ci-dessus n'est pas valide, générer une exception :
 		// `CollegueInvalideException`. avec un message approprié.

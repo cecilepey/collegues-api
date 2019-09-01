@@ -101,12 +101,4 @@ public class CollegueController {
 		return collegue1; 
 	}
 	
-//	@PatchMapping(value="/collegues/{matricule}")
-//	public Collegue modifierPhotoUrl(@PathVariable String matricule,  @RequestBody Collegue collegue) {
-//		
-//		Collegue collegue1 = colService.modifierPhotoUrl(matricule, collegue); 
-//	
-//		return collegue1; 
-//	}
-	
 }
