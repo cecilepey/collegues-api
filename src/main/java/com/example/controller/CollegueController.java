@@ -87,19 +87,26 @@ public class CollegueController {
 	}
 	
 	@PatchMapping(value="/collegues/{matricule}")
-	public Collegue modifierMatricule(@PathVariable String matricule,  @RequestBody String email) {
+	public Collegue modifierEmail(@PathVariable String matricule,  @RequestBody Collegue collegue) {
 		
-		Collegue collegue1 = colService.modifierEmail(matricule, email); 
-	
+		Collegue collegue1 = null; 
+		
+		if(collegue.getEmail() != null) {
+		collegue1 = colService.modifierEmail(matricule, collegue); 
+		}
+		
+		if (collegue.getPhotoUrl() !=null) {
+			collegue1 = colService.modifierPhotoUrl(matricule, collegue);
+		}
 		return collegue1; 
 	}
 	
-	@PatchMapping(value="/collegues/photo/{matricule}")
-	public Collegue modifierPhotoUrl(@PathVariable String matricule,  @RequestBody String photoUrl) {
-		
-		Collegue collegue1 = colService.modifierPhotoUrl(matricule, photoUrl); 
-	
-		return collegue1; 
-	}
+//	@PatchMapping(value="/collegues/{matricule}")
+//	public Collegue modifierPhotoUrl(@PathVariable String matricule,  @RequestBody Collegue collegue) {
+//		
+//		Collegue collegue1 = colService.modifierPhotoUrl(matricule, collegue); 
+//	
+//		return collegue1; 
+//	}
 	
 }

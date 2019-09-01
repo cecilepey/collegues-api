@@ -80,7 +80,7 @@ public class CollegueService {
 		return collegueAAjouter;
 	}
 
-	public Collegue modifierEmail(String matricule, String email) {
+	public Collegue modifierEmail(String matricule, Collegue collegue) {
 
 		// TODO retourner une exception `CollegueNonTrouveException`
 		// si le matricule ne correspond à aucun collègue
@@ -91,11 +91,11 @@ public class CollegueService {
 			throw new CollegueNonTrouveException("Ce matricule n'existe pas");
 		}
 
-		if (email != null) {
-			if (email.length() < 3) {
+		if (collegue.getEmail() != null) {
+			if (collegue.getEmail().length() < 3) {
 				throw new CollegueInvalideException("L'email est trop court");
 			}
-			if (!email.contains("@")) {
+			if (!collegue.getEmail().contains("@")) {
 				throw new CollegueInvalideException("L'email n'a pas d'@");
 			}
 		} else {
@@ -103,7 +103,7 @@ public class CollegueService {
 		}
 
 		// if (collegue1 != null) {
-		collegue1.setEmail(email);
+		collegue1.setEmail(collegue.getEmail());
 		return collegue1;
 		// } else {
 		// throw new CollegueNonTrouveException("Collègue non trouvé");
@@ -116,7 +116,7 @@ public class CollegueService {
 		// TODO Modifier le collègue
 	}
 
-	public Collegue modifierPhotoUrl(String matricule, String photoUrl) {
+	public Collegue modifierPhotoUrl(String matricule, Collegue	collegue) {
 
 		// TODO retourner une exception `CollegueNonTrouveException`
 		// si le matricule ne correspond à aucun collègue
@@ -131,8 +131,8 @@ public class CollegueService {
 		// TODO Si la règle ci-dessus n'est pas valide, générer une exception :
 		// `CollegueInvalideException`. avec un message approprié.
 
-		if (photoUrl != null) {
-			if (!photoUrl.startsWith("http")) {
+		if (collegue.getPhotoUrl() != null) {
+			if (!collegue.getPhotoUrl().startsWith("http")) {
 				throw new CollegueInvalideException("L'url ne commence pas par http");
 			}
 		} else {
@@ -141,7 +141,7 @@ public class CollegueService {
 
 		// TODO Modifier le collègue
 
-		collegue1.setPhotoUrl(photoUrl);
+		collegue1.setPhotoUrl(collegue.getPhotoUrl());
 
 		return collegue1;
 	}
