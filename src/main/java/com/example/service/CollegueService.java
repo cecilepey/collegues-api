@@ -25,6 +25,8 @@ import com.example.repository.CollegueRepository;
 import com.example.utils.DataUtils;
 
 /**
+ * Classe qui gère les services pour les collègues
+ * 
  * @author Cécile Peyras
  *
  */
@@ -41,6 +43,11 @@ public class CollegueService {
 
 	}
 
+	/**
+	 * Méthode qui recherche une liste de collègue par son nom
+	 * @param nomRecherche
+	 * @return
+	 */
 	public List<Collegue> rechercherParNom(String nomRecherche) {
 
 		// TODO retourner une liste de collègues dont le nom est fourni
@@ -102,10 +109,9 @@ public class CollegueService {
 			throw new CollegueInvalideException("L'email est vide");
 		}
 
-	
 		collegue1.setEmail(collegue.getEmail());
 		return collegue1;
-		
+
 		// TODO Vérifier que l'email a au moins 3 caractères et contient `@`
 		// TODO Si la règle ci-dessus n'est pas valide, générer une exception :
 		// `CollegueInvalideException`. avec un message approprié.
@@ -113,13 +119,13 @@ public class CollegueService {
 		// TODO Modifier le collègue
 	}
 
-	public Collegue modifierPhotoUrl(String matricule, Collegue	collegue) {
+	public Collegue modifierPhotoUrl(String matricule, Collegue collegue) {
 
 		// TODO retourner une exception `CollegueNonTrouveException`
 		// si le matricule ne correspond à aucun collègue
 
 		Collegue collegue1 = collegueRepo.findByMatricule(matricule);
-		
+
 		if (collegue1 == null) {
 			throw new CollegueNonTrouveException("Ce matricule n'existe pas");
 		}

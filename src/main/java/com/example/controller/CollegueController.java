@@ -30,6 +30,7 @@ import com.example.service.CollegueService;
 
 /**
  * @author Cécile Peyras
+ * Controller qui gère les collègues
  *
  */
 @RestController
