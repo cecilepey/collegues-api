@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.entite.Collegue;
@@ -23,6 +25,9 @@ import com.example.repository.CollegueRepository;
 @SpringBootTest
 public class CollegueServiceTest {
 
+	@Autowired
+	PasswordEncoder passwordEncoder; 
+	
 	@Autowired
 	CollegueService collegueService;
 
@@ -151,7 +156,7 @@ public class CollegueServiceTest {
 	@Test
 	public void testRechercherParNomOK() {
 		Collegue collegue = new Collegue(UUID.randomUUID().toString(), "Lili", "Cecile", "cecile@collegue.fr",
-				LocalDate.of(1981, 7, 15), "http/photo");
+				LocalDate.of(1981, 7, 15), "http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 		List<Collegue> liste = new ArrayList<>();
 
 		liste.add(collegue);
@@ -165,7 +170,7 @@ public class CollegueServiceTest {
 	@Test
 	public void testRechercherParNomErreur() {
 		Collegue collegue = new Collegue(UUID.randomUUID().toString(), "Peyras", "Cecile", "cecile@collegue.fr",
-				LocalDate.of(1981, 7, 15), "http/photo");
+				LocalDate.of(1981, 7, 15), "http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 		List<Collegue> liste = new ArrayList<>();
 
 		liste.add(collegue);
@@ -181,7 +186,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
@@ -194,7 +199,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
@@ -209,7 +214,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 		
@@ -227,7 +232,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
@@ -244,7 +249,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
@@ -262,7 +267,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
@@ -281,7 +286,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 		Collegue collegue1 = new Collegue();
@@ -301,7 +306,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
@@ -318,7 +323,7 @@ public class CollegueServiceTest {
 		String matricule = UUID.randomUUID().toString();
 
 		Collegue collegue = new Collegue(matricule, "Peyras", "Cecile", "cecile@collegue.fr", LocalDate.of(1981, 7, 15),
-				"http/photo");
+				"http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		collegueRepo.save(collegue);
 
