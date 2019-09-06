@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/**").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
 		.antMatchers("/auth").permitAll()
+		.antMatchers("/authentification").permitAll()
 		.antMatchers(HttpMethod.POST,"/collegues").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().headers().frameOptions().disable()
