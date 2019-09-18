@@ -48,12 +48,15 @@ public class AuthentificationCtrl {
 	}
 
 	@PostMapping("/auth")
-	public String post(@ModelAttribute("login") InfosAuthentification infos, HttpServletResponse response) {
+	@ResponseBody
+	public String post(@RequestBody InfosAuthentification infos, HttpServletResponse response) {
 
 		Optional<String> token = authentificationUtil.authPartial(infos);
 
 		if (token.isPresent()) {
 			response.addHeader("set-cookie", token.get());
+		}else {
+			throw new RuntimeException();
 		}
 
 		return "home";
