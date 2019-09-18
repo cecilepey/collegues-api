@@ -38,6 +38,9 @@ public class StartupDataInit {
 
 		Collegue collegue1 = new Collegue(UUID.randomUUID().toString(), "Peyras", "Cecile", "cecile@collegue.fr",
 				LocalDate.of(1981, 7, 15), "http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
+		
+		Collegue collegue4 = new Collegue(UUID.randomUUID().toString(), "Peyras", "Cecile2", "cecile2@collegue.fr",
+				LocalDate.of(1981, 7, 15), "http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_ADMIN"));
 
 		Collegue collegue2 = new Collegue(UUID.randomUUID().toString(), "Lili", "Saina", "saina@collegue.fr",
 				LocalDate.of(1980, 9, 15), "http/photo", passwordEncoder.encode("test"), Arrays.asList("ROLE_USER"));
