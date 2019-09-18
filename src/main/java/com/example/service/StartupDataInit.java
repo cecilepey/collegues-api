@@ -51,5 +51,6 @@ public class StartupDataInit {
 		collegueRepo.save(collegue1); 
 		collegueRepo.save(collegue2); 
 		collegueRepo.save(collegue3); 
+		collegueRepo.save(collegue4);
 	}
 }
