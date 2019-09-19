@@ -65,9 +65,10 @@ public class CollegueController {
 	}
 
 	@ExceptionHandler({ CollegueNonTrouveException.class })
-	public ResponseEntity<String> errorCollegueNonTouveException() {
+	public ResponseEntity<Object> errorCollegueNonTouveException(CollegueNonTrouveException e) {
 
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Collègue non trouvé");
+		return  new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
 
 	}
 
