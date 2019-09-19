@@ -81,9 +81,9 @@ public class CollegueController {
 	
 
 	@ExceptionHandler({ CollegueInvalideException.class })
-	public ResponseEntity<String> errorCollegueInvalideException() {
+	public ResponseEntity<Object> errorCollegueInvalideException(CollegueInvalideException e) {
 
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Collègue non validé");
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 
 	}
 	

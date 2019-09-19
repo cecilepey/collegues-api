@@ -16,5 +16,10 @@ public class CollegueNonTrouveException extends RuntimeException {
 		super(message);
 
 	}
+	
+	public CollegueNonTrouveException() {
+		super();
+
+	}
 
 }

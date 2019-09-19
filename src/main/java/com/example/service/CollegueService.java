@@ -65,7 +65,7 @@ public class CollegueService {
 		if (collegue1 != null) {
 			return collegue1;
 		} else {
-			throw new CollegueNonTrouveException("Collègue non trouvé");
+			throw new CollegueNonTrouveException("Ce matricule n'existe pas");
 		}
 
 	}
