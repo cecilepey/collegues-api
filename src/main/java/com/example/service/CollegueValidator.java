@@ -64,7 +64,7 @@ public class CollegueValidator {
 				throw new CollegueInvalideException("L'utilisateur n'a pas 18 ans");
 			}
 		} else {
-			throw new CollegueInvalideException("La date de naissance est vide");
+			throw new CollegueInvalideException("La date de naissance n'est pas correcte");
 		}
 
 	}
