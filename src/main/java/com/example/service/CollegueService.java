@@ -110,6 +110,8 @@ public class CollegueService {
 		}
 
 		collegue1.setEmail(collegue.getEmail());
+		collegue  =collegue1; 
+		collegueRepo.save(collegue);
 		return collegue1;
 
 		// TODO Vérifier que l'email a au moins 3 caractères et contient `@`
@@ -145,6 +147,9 @@ public class CollegueService {
 		// TODO Modifier le collègue
 
 		collegue1.setPhotoUrl(collegue.getPhotoUrl());
+		
+		collegue = collegue1; 
+		collegueRepo.save(collegue);
 
 		return collegue1;
 	}
