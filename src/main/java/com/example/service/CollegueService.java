@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.example.controller.DTO.CollegueDtoPhoto;
 import com.example.entite.Collegue;
 import com.example.exception.CollegueInvalideException;
 import com.example.exception.CollegueNonTrouveException;
@@ -164,7 +165,12 @@ public class CollegueService {
 		else {
 			return null;
 		}
+
+	}
+	
+	public List<CollegueDtoPhoto> afficherPhotos() {
 		
+		return collegueRepo.findAllWithMatriculeAndPhotoUrl(); 
 		
 	}
 }

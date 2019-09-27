@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.controller.DTO.CollegueDtoPhoto;
 import com.example.entite.Collegue;
 import com.example.exception.CollegueInvalideException;
 import com.example.exception.CollegueNonTrouveException;
@@ -112,6 +113,12 @@ public class CollegueController {
 			collegue1 = colService.modifierPhotoUrl(matricule, collegue);
 		}
 		return collegue1; 
+	}
+	
+	@GetMapping("/collegues/photos")
+	public List<CollegueDtoPhoto> afficherPhoto(){
+		
+		return colService.afficherPhotos(); 
 	}
 	
 }

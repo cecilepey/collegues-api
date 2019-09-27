@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
+import com.example.controller.DTO.CollegueDtoPhoto;
 import com.example.entite.Collegue;
 
 /**
@@ -30,4 +32,7 @@ public interface CollegueRepository extends JpaRepository<Collegue, String> {
 	Collegue findByMatricule(String matricule);
 
 	Optional<Collegue> findByEmail(String email);
+	
+	@Query("select new com.example.controller.DTO.CollegueDtoPhoto (c.matricule, c.photoUrl) from Collegue c")
+	List<CollegueDtoPhoto> findAllWithMatriculeAndPhotoUrl();
 }
