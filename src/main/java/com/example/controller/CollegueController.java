@@ -39,7 +39,7 @@ public class CollegueController {
 	@Autowired
 	CollegueService colService;
 
-	@GetMapping(value = "/collegues")
+	@GetMapping(value = "/collegues", params = "nom")
 	public List<String> findByNom(@RequestParam String nom) {
 
 		List<Collegue> listeCollegue = colService.rechercherParNom(nom);
@@ -52,6 +52,17 @@ public class CollegueController {
 		}
 
 		return listeMatricule;
+
+	}
+	
+	@GetMapping(value = "/collegues", params = "email")
+	public ResponseEntity findByEmail(@RequestParam String email) {
+
+		if (colService.validerEmail(email)==null) {
+			return new ResponseEntity(HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.CONFLICT);
+		}
 
 	}
 

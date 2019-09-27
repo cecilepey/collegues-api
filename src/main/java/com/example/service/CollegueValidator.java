@@ -4,11 +4,14 @@
 package com.example.service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.entite.Collegue;
 import com.example.exception.CollegueInvalideException;
+import com.example.repository.CollegueRepository;
 
 /**
  * @author Cécile Peyras
@@ -16,8 +19,10 @@ import com.example.exception.CollegueInvalideException;
  */
 @Component
 public class CollegueValidator {
+	
 
 	public void validerCollegue(Collegue collegueAValider) {
+		
 
 		if (collegueAValider.getNom() != null) {
 			if (collegueAValider.getNom().length() < 2) {

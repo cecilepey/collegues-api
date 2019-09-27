@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
@@ -154,4 +155,16 @@ public class CollegueService {
 		return collegue1;
 	}
 
+	public String validerEmail(String email){
+		
+		
+		if(collegueRepo.findByEmail(email).isPresent()) {
+			return email;  
+		}
+		else {
+			return null;
+		}
+		
+		
+	}
 }
